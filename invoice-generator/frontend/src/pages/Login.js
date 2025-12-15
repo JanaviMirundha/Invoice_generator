@@ -34,16 +34,22 @@ const Login = ({ setIsAuthenticated, setUser }) => {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
+    background: 'linear-gradient(135deg, #DADDE2 0%, #C7D3E0 50%, #DADDE2 100%)',
+    position: 'relative',
+    overflow: 'hidden',
+    animation: 'gradientShift 8s ease-in-out infinite'
   };
 
   const formStyle = {
-    backgroundColor: 'white',
-    padding: '2rem',
-    borderRadius: '10px',
-    boxShadow: '0 10px 30px rgba(0,0,0,0.2)',
-    width: '400px',
-    maxWidth: '90%'
+    backgroundColor: '#F8F9FB',
+    padding: '3rem',
+    borderRadius: '25px',
+    boxShadow: '0 30px 60px rgba(218, 221, 226, 0.4)',
+    width: '450px',
+    maxWidth: '90%',
+    backdropFilter: 'blur(15px)',
+    border: '2px solid rgba(199, 211, 224, 0.3)',
+    animation: 'floatUp 3s ease-in-out infinite alternate'
   };
 
   const inputStyle = {
@@ -57,20 +63,28 @@ const Login = ({ setIsAuthenticated, setUser }) => {
 
   const buttonStyle = {
     width: '100%',
-    padding: '0.75rem',
-    backgroundColor: '#667eea',
-    color: 'white',
+    padding: '1rem',
+    background: 'linear-gradient(135deg, #DADDE2 0%, #9FB3C8 100%)',
+    color: '#2E2E2E',
     border: 'none',
-    borderRadius: '5px',
-    fontSize: '1rem',
+    borderRadius: '15px',
+    fontSize: '1.1rem',
+    fontWeight: '700',
     cursor: 'pointer',
-    transition: 'all 0.3s ease'
+    transition: 'all 0.4s ease',
+    boxShadow: '0 10px 25px rgba(218, 221, 226, 0.4)',
+    animation: 'pulse 2s infinite'
   };
 
   return (
     <div style={containerStyle}>
       <form onSubmit={handleSubmit} style={formStyle}>
-        <h2 style={{ textAlign: 'center', marginBottom: '1.5rem', color: '#333' }}>Login</h2>
+        <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+          <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>📄</div>
+          <h1 style={{ color: '#2E2E2E', marginBottom: '0.5rem', fontSize: '2rem', fontWeight: '700', animation: 'slideInDown 1s ease-out' }}>Invoice Generator</h1>
+          <p style={{ color: '#2E2E2E', fontSize: '1rem', marginBottom: '2rem', animation: 'fadeIn 1.5s ease-out' }}>Professional invoicing made simple. Create, manage, and track your business invoices with ease.</p>
+        </div>
+        <h2 style={{ textAlign: 'center', marginBottom: '1.5rem', color: '#2E2E2E', fontSize: '1.5rem', animation: 'slideInLeft 1.2s ease-out' }}>Welcome Back</h2>
         
         {error && (
           <div style={{ color: '#ff4757', textAlign: 'center', marginBottom: '1rem' }}>
@@ -102,14 +116,14 @@ const Login = ({ setIsAuthenticated, setUser }) => {
           type="submit" 
           disabled={loading}
           style={buttonStyle}
-          onMouseOver={(e) => e.target.style.backgroundColor = '#5a67d8'}
-          onMouseOut={(e) => e.target.style.backgroundColor = '#667eea'}
+          onMouseOver={(e) => e.target.style.background = 'linear-gradient(135deg, #9FB3C8 0%, #C7D3E0 100%)'}
+          onMouseOut={(e) => e.target.style.background = 'linear-gradient(135deg, #DADDE2 0%, #9FB3C8 100%)'}
         >
           {loading ? 'Logging in...' : 'Login'}
         </button>
 
         <p style={{ textAlign: 'center', marginTop: '1rem' }}>
-          Don't have an account? <Link to="/register" style={{ color: '#667eea' }}>Register</Link>
+          Don't have an account? <Link to="/register" style={{ color: '#9FB3C8' }}>Register</Link>
         </p>
       </form>
     </div>

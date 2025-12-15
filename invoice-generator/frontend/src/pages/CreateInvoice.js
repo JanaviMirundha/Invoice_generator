@@ -82,14 +82,19 @@ const CreateInvoice = () => {
   const containerStyle = {
     padding: '2rem',
     maxWidth: '800px',
-    margin: '0 auto'
+    margin: '0 auto',
+    background: 'linear-gradient(135deg, #DADDE2 0%, #C7D3E0 50%, #DADDE2 100%)',
+    minHeight: 'calc(100vh - 80px)'
   };
 
   const formStyle = {
-    backgroundColor: 'white',
-    padding: '2rem',
-    borderRadius: '10px',
-    boxShadow: '0 5px 15px rgba(0,0,0,0.1)'
+    backgroundColor: '#F8F9FB',
+    padding: '3rem',
+    borderRadius: '25px',
+    boxShadow: '0 30px 60px rgba(218, 221, 226, 0.4)',
+    backdropFilter: 'blur(15px)',
+    border: '2px solid rgba(199, 211, 224, 0.3)',
+    animation: 'bounceIn 1s ease-out'
   };
 
   const inputStyle = {
@@ -102,24 +107,27 @@ const CreateInvoice = () => {
   };
 
   const buttonStyle = {
-    backgroundColor: '#667eea',
-    color: 'white',
-    padding: '0.75rem 1.5rem',
+    background: 'linear-gradient(135deg, #DADDE2 0%, #9FB3C8 100%)',
+    color: '#2E2E2E',
+    padding: '1rem 1.5rem',
     border: 'none',
-    borderRadius: '5px',
+    borderRadius: '15px',
     cursor: 'pointer',
     fontSize: '1rem',
-    transition: 'all 0.3s ease'
+    fontWeight: '700',
+    transition: 'all 0.4s ease',
+    boxShadow: '0 10px 25px rgba(218, 221, 226, 0.4)',
+    animation: 'pulse 2s infinite'
   };
 
   return (
     <div style={containerStyle}>
-      <h1 style={{ textAlign: 'center', color: '#333', marginBottom: '2rem' }}>Create Invoice</h1>
+      <h1 style={{ textAlign: 'center', color: '#2E2E2E', marginBottom: '2rem', fontSize: '2.5rem', fontWeight: '700', animation: 'slideInDown 1s ease-out' }}>Create Invoice</h1>
       
       <form onSubmit={handleSubmit} style={formStyle}>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '2rem' }}>
           <div>
-            <h3>Company Details</h3>
+            <h3 style={{ color: '#2E2E2E', marginBottom: '1rem' }}>Company Details</h3>
             <input
               type="text"
               name="companyName"
@@ -140,7 +148,7 @@ const CreateInvoice = () => {
           </div>
           
           <div>
-            <h3>Client Details</h3>
+            <h3 style={{ color: '#2E2E2E', marginBottom: '1rem' }}>Client Details</h3>
             <input
               type="text"
               name="clientName"
@@ -163,7 +171,7 @@ const CreateInvoice = () => {
 
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '2rem' }}>
           <div>
-            <label>Invoice Date:</label>
+            <label style={{ color: '#2E2E2E', fontWeight: '600' }}>Invoice Date:</label>
             <input
               type="date"
               name="invoiceDate"
@@ -174,7 +182,7 @@ const CreateInvoice = () => {
             />
           </div>
           <div>
-            <label>Due Date:</label>
+            <label style={{ color: '#2E2E2E', fontWeight: '600' }}>Due Date:</label>
             <input
               type="date"
               name="dueDate"
@@ -186,7 +194,7 @@ const CreateInvoice = () => {
           </div>
         </div>
 
-        <h3>Items</h3>
+        <h3 style={{ color: '#2E2E2E', marginBottom: '1rem' }}>Items</h3>
         {formData.items.map((item, index) => (
           <div key={index} style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr auto', gap: '0.5rem', alignItems: 'center', marginBottom: '1rem' }}>
             <input
@@ -226,7 +234,7 @@ const CreateInvoice = () => {
               <button
                 type="button"
                 onClick={() => removeItem(index)}
-                style={{ ...buttonStyle, backgroundColor: '#ff4757', padding: '0.5rem' }}
+                style={{ ...buttonStyle, background: 'linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%)', padding: '0.5rem', color: 'white' }}
               >
                 ×
               </button>
@@ -237,14 +245,14 @@ const CreateInvoice = () => {
         <button
           type="button"
           onClick={addItem}
-          style={{ ...buttonStyle, backgroundColor: '#2ed573', marginBottom: '2rem' }}
+          style={{ ...buttonStyle, background: 'linear-gradient(135deg, #51cf66 0%, #40c057 100%)', marginBottom: '2rem', color: 'white' }}
         >
           Add Item
         </button>
 
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '1rem', marginBottom: '2rem' }}>
           <div>
-            <label>Tax %:</label>
+            <label style={{ color: '#2E2E2E', fontWeight: '600' }}>Tax %:</label>
             <input
               type="number"
               name="taxPercentage"
@@ -257,7 +265,7 @@ const CreateInvoice = () => {
             />
           </div>
           <div>
-            <label>Discount:</label>
+            <label style={{ color: '#2E2E2E', fontWeight: '600' }}>Discount:</label>
             <input
               type="number"
               name="discount"
@@ -269,7 +277,7 @@ const CreateInvoice = () => {
             />
           </div>
           <div>
-            <label>Status:</label>
+            <label style={{ color: '#2E2E2E', fontWeight: '600' }}>Status:</label>
             <select
               name="status"
               value={formData.status || 'Unpaid'}
@@ -284,22 +292,22 @@ const CreateInvoice = () => {
           </div>
         </div>
 
-        <div style={{ backgroundColor: '#f8f9fa', padding: '1rem', borderRadius: '5px', marginBottom: '2rem' }}>
+        <div style={{ background: 'linear-gradient(135deg, rgba(218, 221, 226, 0.2) 0%, rgba(159, 179, 200, 0.2) 100%)', padding: '1.5rem', borderRadius: '15px', marginBottom: '2rem', border: '2px solid rgba(159, 179, 200, 0.3)' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
-            <span>Subtotal:</span>
-            <span>${subtotal.toFixed(2)}</span>
+            <span style={{ color: '#2E2E2E', fontWeight: '600' }}>Subtotal:</span>
+            <span style={{ color: '#2E2E2E', fontWeight: '600' }}>${subtotal.toFixed(2)}</span>
           </div>
           <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
-            <span>Tax ({formData.taxPercentage}%):</span>
-            <span>${taxAmount.toFixed(2)}</span>
+            <span style={{ color: '#2E2E2E', fontWeight: '600' }}>Tax ({formData.taxPercentage}%):</span>
+            <span style={{ color: '#2E2E2E', fontWeight: '600' }}>${taxAmount.toFixed(2)}</span>
           </div>
           <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
-            <span>Discount:</span>
-            <span>-${Number(formData.discount || 0).toFixed(2)}</span>
+            <span style={{ color: '#2E2E2E', fontWeight: '600' }}>Discount:</span>
+            <span style={{ color: '#2E2E2E', fontWeight: '600' }}>-${Number(formData.discount || 0).toFixed(2)}</span>
           </div>
-          <div style={{ display: 'flex', justifyContent: 'space-between', fontWeight: 'bold', fontSize: '1.2rem', borderTop: '2px solid #333', paddingTop: '0.5rem' }}>
-            <span>Grand Total:</span>
-            <span>${grandTotal.toFixed(2)}</span>
+          <div style={{ display: 'flex', justifyContent: 'space-between', fontWeight: 'bold', fontSize: '1.2rem', borderTop: '2px solid #9FB3C8', paddingTop: '0.5rem' }}>
+            <span style={{ color: '#2E2E2E' }}>Grand Total:</span>
+            <span style={{ color: '#2E2E2E' }}>${grandTotal.toFixed(2)}</span>
           </div>
         </div>
 

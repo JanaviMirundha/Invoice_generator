@@ -5,9 +5,11 @@ const Navbar = ({ user, logout }) => {
   const location = useLocation();
 
   const navStyle = {
-    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+    background: 'linear-gradient(135deg, #DADDE2 0%, #C7D3E0 100%)',
     padding: '1rem 2rem',
-    boxShadow: '0 2px 10px rgba(0,0,0,0.1)'
+    boxShadow: '0 4px 20px rgba(218, 221, 226, 0.4)',
+    backdropFilter: 'blur(15px)',
+    animation: 'slideInDown 0.8s ease-out'
   };
 
   const linkStyle = {
@@ -29,14 +31,14 @@ const Navbar = ({ user, logout }) => {
     <nav style={navStyle}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <div style={{ display: 'flex', alignItems: 'center' }}>
-          <h2 style={{ color: 'white', margin: 0, marginRight: '2rem' }}>Invoice Generator</h2>
+          <h2 style={{ color: '#2E2E2E', margin: 0, marginRight: '2rem', fontWeight: '700' }}>Invoice Generator</h2>
           <Link to="/home" style={location.pathname === '/home' ? activeLinkStyle : linkStyle}>Home</Link>
           <Link to="/dashboard" style={location.pathname === '/dashboard' ? activeLinkStyle : linkStyle}>Dashboard</Link>
           <Link to="/create-invoice" style={location.pathname === '/create-invoice' ? activeLinkStyle : linkStyle}>Create Invoice</Link>
           <Link to="/about" style={location.pathname === '/about' ? activeLinkStyle : linkStyle}>About</Link>
         </div>
         <div style={{ display: 'flex', alignItems: 'center' }}>
-          <span style={{ color: 'white', marginRight: '1rem' }}>Welcome, {user?.name}</span>
+          <span style={{ color: '#2E2E2E', marginRight: '1rem', fontWeight: '600' }}>Welcome, {user?.name}</span>
           <button 
             onClick={logout}
             style={{
@@ -48,7 +50,7 @@ const Navbar = ({ user, logout }) => {
               cursor: 'pointer',
               transition: 'all 0.3s ease'
             }}
-            onMouseOver={(e) => e.target.style.backgroundColor = '#ff3742'}
+            onMouseOver={(e) => e.target.style.backgroundColor = '#e74c3c'}
             onMouseOut={(e) => e.target.style.backgroundColor = '#ff4757'}
           >
             Logout

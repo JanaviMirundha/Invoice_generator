@@ -35,23 +35,29 @@ const Dashboard = () => {
   const containerStyle = {
     padding: '2rem',
     maxWidth: '1200px',
-    margin: '0 auto'
+    margin: '0 auto',
+    background: 'linear-gradient(135deg, #DADDE2 0%, #C7D3E0 50%, #DADDE2 100%)',
+    minHeight: 'calc(100vh - 80px)'
   };
 
   const tableStyle = {
     width: '100%',
     borderCollapse: 'collapse',
-    backgroundColor: 'white',
-    borderRadius: '10px',
+    backgroundColor: '#F8F9FB',
+    borderRadius: '20px',
     overflow: 'hidden',
-    boxShadow: '0 5px 15px rgba(0,0,0,0.1)'
+    boxShadow: '0 30px 60px rgba(218, 221, 226, 0.4)',
+    backdropFilter: 'blur(10px)',
+    border: '2px solid rgba(199, 211, 224, 0.3)'
   };
 
   const thStyle = {
-    backgroundColor: '#667eea',
-    color: 'white',
-    padding: '1rem',
-    textAlign: 'left'
+    background: 'linear-gradient(135deg, #DADDE2 0%, #9FB3C8 100%)',
+    color: '#2E2E2E',
+    padding: '1.2rem',
+    textAlign: 'left',
+    fontWeight: '600',
+    fontSize: '1rem'
   };
 
   const tdStyle = {
@@ -81,13 +87,15 @@ const Dashboard = () => {
   return (
     <div style={containerStyle}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
-        <h1 style={{ color: '#333' }}>Invoice Dashboard</h1>
+        <h1 style={{ color: '#2E2E2E', fontSize: '2.5rem', fontWeight: '700', textShadow: '0 4px 8px rgba(218, 221, 226, 0.3)', animation: 'slideInDown 1s ease-out' }}>Invoice Dashboard</h1>
         <Link 
           to="/create-invoice"
           style={{
             ...buttonStyle,
-            backgroundColor: '#2ed573',
-            color: 'white'
+            background: 'linear-gradient(135deg, #DADDE2 0%, #9FB3C8 100%)',
+            color: '#2E2E2E',
+            boxShadow: '0 8px 20px rgba(218, 221, 226, 0.4)',
+            fontWeight: '600'
           }}
         >
           Create New Invoice
@@ -95,10 +103,10 @@ const Dashboard = () => {
       </div>
 
       {invoices.length === 0 ? (
-        <div style={{ textAlign: 'center', padding: '3rem', backgroundColor: 'white', borderRadius: '10px' }}>
-          <h3>No invoices found</h3>
-          <p>Create your first invoice to get started!</p>
-          <Link to="/create-invoice" style={{ color: '#667eea' }}>Create Invoice</Link>
+        <div style={{ textAlign: 'center', padding: '3rem', backgroundColor: '#F8F9FB', borderRadius: '20px', backdropFilter: 'blur(10px)', boxShadow: '0 30px 60px rgba(218, 221, 226, 0.4)' }}>
+          <h3 style={{ color: '#2E2E2E', fontSize: '1.5rem' }}>No invoices found</h3>
+          <p style={{ color: '#2E2E2E', fontSize: '1.1rem' }}>Create your first invoice to get started!</p>
+          <Link to="/create-invoice" style={{ color: '#9FB3C8' }}>Create Invoice</Link>
         </div>
       ) : (
         <table style={tableStyle}>
@@ -138,7 +146,7 @@ const Dashboard = () => {
                     to={`/invoice/${invoice._id}`}
                     style={{
                       ...buttonStyle,
-                      backgroundColor: '#667eea',
+                      backgroundColor: '#9FB3C8',
                       color: 'white'
                     }}
                   >
